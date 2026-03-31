@@ -1,0 +1,112 @@
+<?php
+// Simple PHP logic
+$message = "Welcome to my website!";
+$date = date("d M Y, h:i A");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My PHP Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+        header {
+            background: #1e293b;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        nav {
+            background: #334155;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #38bdf8;
+        }
+        .container {
+            padding: 30px;
+            text-align: center;
+        }
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        footer {
+            background: #1e293b;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #38bdf8;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    My First PHP Website 🚀
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+    <h1><?php echo $message; ?></h1>
+
+    <div class="card">
+        <p>Current Time:</p>
+        <h3><?php echo $date; ?></h3>
+
+        <br>
+
+        <form method="POST">
+            <input type="text" name="username" placeholder="Enter your name" required>
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = htmlspecialchars($_POST["username"]);
+            echo "<h3>Hello, $name 👋</h3>";
+        }
+        ?>
+    </div>
+</div>
+
+<footer>
+    © <?php echo date("Y"); ?> My Website
+</footer>
+
+</body>
+</html>
